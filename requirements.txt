@@ -2,3 +2,4 @@ pandas
 numpy
 jupyterlab
 scikit-learn==1.3.2
+joblib

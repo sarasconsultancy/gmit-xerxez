@@ -20,7 +20,7 @@ estimators:
       alpha: 0.9
       l1_ratio: 0.7
 
-model_dir: models/model_insurance.pkl
+model_dir: models/models.joblib
 
 reports:
   params: reports/params.json
