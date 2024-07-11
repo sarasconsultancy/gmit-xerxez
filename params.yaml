@@ -4,14 +4,14 @@ base:
   target_col: expenses
 
 data_source:
-  s3_data: ../source_data/med-insurance.csv
+  s3_data: source_data/med-insurance.csv
 
 load_data:
-  raw_data: ../data/raw/insurance.csv
+  raw_data: data/raw/insurance.csv
 
 split_data:
-  train_path: ../data/processed/train_insurance.csv
-  test_path: ../data/processed/test_insurance.csv
+  train_path: data/processed/train_insurance.csv
+  test_path: data/processed/test_insurance.csv
   test_size: 0.1
 
 estimators:
@@ -25,4 +25,3 @@ model_dir: models/model_insurance.pkl
 reports:
   params: reports/params.json
   score: reports/score.json
-  
