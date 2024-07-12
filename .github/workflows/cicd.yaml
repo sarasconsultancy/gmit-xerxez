@@ -25,4 +25,11 @@ jobs:
                 python -m pip install --upgrade pip
                 pip install flake8 pytest
                 if [ -f requirements.txt ]; then pip intsall -r requirements.txt; fi
-                
+
+            - name: Docker Build and Push
+              run : |
+                docker build -t medical .
+                docker tag medical xerxez786/medical:latest
+                docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+                docker push xerxez786/medical:latest
+
