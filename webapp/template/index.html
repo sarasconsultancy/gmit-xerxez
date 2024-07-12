@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Medical Expenses</title>
+<style>
+    .button{ 
+        border:none;
+        color:white;
+        padding:10px 20px;
+        text-align:center;
+        text-decoration:none;
+        display:inline-block;
+        font-size:14px;
+        margin:4px 2px;
+        cursor:pointer;
+    }
+    .button1{background-color: #4caf50;}
+    .button2{background-color: #008cba;}
+</style>
+</head>
+<body style="background-color:powderblue">
+
+<center><h1><span style="color:#FF0000">Medical Expenses App </span></h1>
+    <center><h3>Please Enter the Data</h3></center> <br>
+
+    <form action="{% url 'result' %}">
+        {% csrf_token %}
+
+        <table align="center">
+            <tr><td>Age:<td><input type="text" required name="age"></td></tr>
+            <tr><td>Sex:<td><input type="text" required name="sex"></td></tr>
+            <tr><td>BMI:<td><input type="text" required name="bmi"></td></tr>
+            <tr><td>Childrens:<td><input type="text" required name="children"></td></tr>
+            <tr><td>Smoker:<td><input type="text" required name="smoker"></td></tr>
+            <tr><td>Region:<td><input type="text" required name="region"></td></tr>
+        </table>
+
+        <center><button type="submit" name="" value="submit" class="button button1">Submit</button></center>
+        <center><button type="reset" name="" value="reset" class="button button1">Reset</button></center>
+    </form>
+
+    {% if answer %}
+
+    <center><h2 style="color:#FF6600"> The Medical Expenses is {{answer}} Dollars</h2>
+    <h3 style="color:#009900">Thanks for using Medical App, welcome to GMIT</h3></h2>
+    </center>
+
+    {% endif %}
+
+</center>
+</body>
+</html>

@@ -4,3 +4,5 @@ jupyterlab
 scikit-learn==1.3.2
 joblib
 mlflow
+django
+psycopg2-binary
