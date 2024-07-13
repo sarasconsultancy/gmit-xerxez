@@ -27,3 +27,13 @@ jobs:
           pip install flake8 pytest
           if [ -f requirements_docker.txt ]; then pip install -r requirements_docker.txt; fi
 
+      - name: Docker Build and Push to Docker Hub
+        run: |
+         docker build -t medical .
+         docker tag medical xerxez786/medical:latest
+         docker login -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{ secrets.DOCKERHUB_TOKEN }}
+         docker push xerxez786/medical:latest
+        env:
+          DOCKER_CLI_ACI: 1
+
+
