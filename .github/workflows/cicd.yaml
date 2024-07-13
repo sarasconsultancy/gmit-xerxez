@@ -1,35 +1,29 @@
-name: Medical_Expenses
+name: Expenses
 
-on: 
-    push:
-        branches: ["main"]
-    pull_request:
-        branches: ["main"]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request: 
+    branches: [ "main" ]
 
 permissions:
-    contents: read
+  contents: read
 
 jobs:
-    build:
-        runs-on: unbuntu-latest
+  build:
+    runs-on: [ ubuntu-latest ]  #self-hosted
 
-        steps:
-            - uses: actions/checkout@v3
-            - name: Set Up Python 3.11
-              uses: actions/checkout@v3
-              with:
-                python-version: "3.11"
+    steps:
+      - uses: actions/checkout@v3
 
-            - name : Install Dependencies
-              run: |
-                python -m pip install --upgrade pip
-                pip install flake8 pytest
-                if [ -f requirements.txt ]; then pip intsall -r requirements.txt; fi
+      - name: Set Up Python 3.11
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.11"
 
-            - name: Docker Build and Push
-              run : |
-                docker build -t medical .
-                docker tag medical xerxez786/medical:latest
-                docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-                docker push xerxez786/medical:latest
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 pytest
+          if [ -f requirements_docker.txt ]; then pip install -r requirements_docker.txt; fi
 
